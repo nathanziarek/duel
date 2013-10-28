@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Directive: Taglist</title>
+        <link rel="stylesheet" type="text/css" href="../../styles/_global.less"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            clickOnRemove = function(e) {
+                f =jQuery(e).parents(".d-taglist-node").addClass("is-waiting-removal");
+            }
+            clickOnRestore = function(e) {
+                f =jQuery(e).parents(".d-taglist-node").removeClass("is-waiting-removal");
+            }
+
+        </script>
+    </head>
+    <body>
+        <!-- Sample Start -->
+        <ul class="d-taglist">
+            <li class="d-taglist-node state-ambiguous">
+                <div class="d-taglist-tag">
+                    <a href="#">AMBIGUOUS</a>
+                    <a class="d-taglist-remove" title="Remove AMBIGUOUS" onclick="clickOnRemove(this)"><i class="icon-remove"></i></a>
+                </div>
+                <a class="d-taglist-restore" title="Restore AMBIGUOUS" onclick="clickOnRestore(this)"><i class="icon-undo"></i></a>
+            </li>
+            <li class="d-taglist-node state-valid">
+                <div class="d-taglist-tag">
+                    <a href="#">VALID</a>
+                    <a class="d-taglist-remove" title="Remove VALID" onclick="clickOnRemove(this)"><i class="icon-remove"></i></a>
+                </div>
+                <a class="d-taglist-restore" title="Restore VALID" onclick="clickOnRestore(this)"><i class="icon-undo"></i></a>
+            </li>
+            <li class="d-taglist-node state-invalid">
+                <div class="d-taglist-tag" title="This coupon is expired.">
+                    <a href="#">INVALID</a>
+                    <a class="d-taglist-remove" title="Remove INVALID" onclick="clickOnRemove(this)"><i class="icon-remove"></i></a>
+                </div>
+                <a class="d-taglist-restore" title="Restore INVALID" onclick="clickOnRestore(this)"><i class="icon-undo"></i></a>
+            </li>
+        </ul>
+        <!-- Sample End -->
+    </body>
+</html>

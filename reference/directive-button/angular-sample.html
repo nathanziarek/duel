@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../../styles/_global.less"/>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js" type="text/javascript"></script>
+        <script data-main="../scripts/_global" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js"
+                type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    </head>
+    <body ng-controller="angTest">
+
+        <!--Angular Templates-->
+
+        <script type="text/ng-template" id="widget.html">
+            <button class="ds-button is-{{state}} attr-{{attribute}}">
+                <i ng-hide="!preicon" class="ds-button-preicon {{preicon}}"></i>
+                {{label}}
+                <i ng-hide="!posticon" class="ds-button-posticon {{posticon}}"></i>
+            </button>
+        </script>
+
+        <!-- Widget -->
+        <widget preicon="" label="Button" posticon="" state="active" attribute="ambiguous"></widget>
+        <widget preicon="icon-shopping-cart" label="Add to Cart" posticon="" state="active" attribute="primary"></widget>
+        <widget preicon="icon-trash" label="Delete All Files" posticon="" state="active" attribute="negative"></widget>
+        <widget preicon="" label="Do Something" posticon="" state="disabled" attribute="negative"></widget>
+        <widget preicon="" label="Continue" posticon="icon-angle-right" state="disabled" attribute="positive"></widget>
+        <widget preicon="icon-hand-right" label="" posticon="" state="disabled" attribute="primary"></widget>
+        <!-- Angular Stuffs -->
+
+        <script>var myApp = angular.module('myApp', []);
+
+        myApp.directive('widget', function () {
+            return {
+                restrict: 'E',
+                replace: true,
+                scope: {
+                    preicon: '@',
+                    posticon: '@',
+                    label: '@',
+                    state: '@',
+                    attribute: '@'
+                },
+                templateUrl: 'widget.html',
+                controller: 'widget'
+            }
+        });
+
+        function widget($scope) {
+            if($scope.state == "disabled") { $scope.disabled = "disabled"; } else { $scope.disabled = ""; }
+        }
+
+        function angTest($scope) { }</script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+@import "_variables";
+@import "../frameworks/LESS-Prefixer/prefixer";
+
+
+.container {
+    position: relative;
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100px;
+        width: 100%;
+        #site-navigation {
+            .gradient(@color-corp-dsi, @color-corp-dsi, lighten(@color-corp-dsi, 10%));
+            height: 40px;
+        }
+        #site-breadcrumb {
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                li {
+                    margin: 0;
+                    padding: 0;
+                    display: inline-block;
+                    font-size: @font-size-small;
+                    &::after {
+                        content: "\203A";
+                        margin: 0 5px 0 10px;
+                    }
+                    a {
+
+                    }
+                }
+            }
+        }
+    }
+    .content {
+        margin-top: 120px;
+        h1 {
+            font-weight: 300;
+        }
+    }
+}

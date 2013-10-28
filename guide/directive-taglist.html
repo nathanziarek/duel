@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>Directive: Taglist</title>
+        <link rel="stylesheet" type="text/css" href="interface/styles/main.less"/>
+    </head>
+    <body>
+        <div class="pageChrome">
+            <nav class="breadcrumbs"><a href="index.html">Home</a> : Tag List</nav>
+            <h1>Tag List</h1>
+
+            <p>Tag lists are designed for attributing an artifact with short text labels. The initial use is for coupons, where the shopping cart is tagged with one or more promotional codes.</p>
+
+            <h2>Inputs</h2>
+
+            <ul>
+                <li><b>Label</b> (Required) &mdash; A short text label indicating the value of the tag.</li>
+                <li><b>Message</b> (Optional) &mdash; A note that appears on hover. While optional, tags with an <i>invalid</i> attribute setting should contain a note indicating why they are invalid.</li>
+                <li><b>Attribute</b> (Required) &mdash; The state of that tag. Either:
+                    <ul>
+                        <li>Valid &mdash; The tag is in an acceptable state for use.</li>
+                        <li>Invalid &mdash; There is some issue with the tag. The message should be set to provide details.</li>
+                        <li>Ambiguous &mdash; The state of the tag is unknown, either due to a delay in retrieving the tags status information or because this type of tag doesn't have a proper state.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2>Interactions</h2>
+
+            <p><b>Removing</b> a tag takes place through the remove control. In order to prevent "Are-You-Sure"-style dialogs, the tag visually dims (styling is handled through the <code>.is-waiting-removal</code> class set on the <code>.d-taglist.node</code> element) and a "Restore" element is displayed. While the tag is still present, its data should be removed from the backend.</p>
+
+            <p>The tag will stick around in a "restorable" state until the page is reloaded.</p>
+
+            <p><b>Restoring</b> a tag takes place through the control only surfaced after the "remove" control has been clicked. Clicking it restores all the data from the tag, and visually re-enables the tag (styling is handled through the <code>.is-waiting-removal</code> class removed from the <code>.d-taglist.node</code> element).</p>
+
+            <p>However a tag is <b>added</b>, it is appended to the end of the tag list.</p>
+
+            <h2>Reference</h2>
+
+            <iframe src="../reference/directive-taglist/html-sample.html" style="height: 32px"></iframe>
+
+            <pre class="prettyprint" data-file="../reference/directive-taglist/html-sample.html"></pre>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="interface/scripts/main.js"></script>
+    </body>
+</html>

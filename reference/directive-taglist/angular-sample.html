@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../../styles/_global.less"/>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js" type="text/javascript"></script>
+        <script data-main="../scripts/_global" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js"
+                type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    </head>
+    <body ng-controller="angTest">
+
+        <!--Angular Templates-->
+
+        <script type="text/ng-template" id="widget.html">
+            <ul class="d-taglist">
+                <li ng-repeat="tag in taglist" class="d-taglist-node state-{{tag.state}}">
+                    <div class="d-taglist-tag" title="{{tag.message}}">
+                        <a ng-click="clickOnTag($event)">{{tag.label}}</a>
+                        <a class="d-taglist-remove" ng-click="clickOnRemove($event)" title="Remove coupon {{tag.label}}"><i class="icon-remove"></i></a>
+                    </div>
+                    <a class="d-taglist-restore" ng-click="clickOnRestore($event)" title="Restore coupon {{tag.label}}"><i class="icon-undo"></i></a>
+                    <!--<div class="ds-taglist-message">{{tag.message}}</div>-->
+                </li>
+            </ul>
+        </script>
+
+        <!-- Widget -->
+
+        <widget></widget>
+
+        <!-- Angular Stuffs -->
+
+        <script>var myApp = angular.module('myApp', []);
+
+        myApp.directive('widget', function () {
+            return {
+                restrict: 'E',
+                replace: true,
+                scope: true,
+                templateUrl: 'widget.html',
+                controller: 'widget'
+            }
+        });
+
+        function widget($scope) {}
+
+        function angTest($scope) {
+            $scope.clickOnTag = function(elem) { console.log(elem); }
+            $scope.clickOnRemove = function(e) {
+                f =jQuery(e.srcElement).parents(".d-taglist-node").addClass("is-waiting-removal");
+            }
+            $scope.clickOnRestore = function(e) {
+                f =jQuery(e.srcElement).parents(".d-taglist-node").removeClass("is-waiting-removal");
+            }
+
+
+            $scope.taglist = [
+                {
+                    "state": "ambiguous",
+                    "label": "FREESHIPPING"
+                }, {
+                    "state": "valid",
+                    "label": "SAVE10PER"
+                }, {
+                    "state": "invalid",
+                    "label": "ALL4FREE",
+                    "message": "This coupon code is invalid."
+                }
+            ];
+        }</script>
+    </body>
+</html>
