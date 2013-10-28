@@ -4,3 +4,6 @@
 [submodule "frameworks/Font-Awesome"]
 	path = frameworks/Font-Awesome
 	url = https://github.com/FortAwesome/Font-Awesome.git
+[submodule "frameworks/LESS-Prefixer"]
+	path = frameworks/LESS-Prefixer
+	url = https://github.com/JoelSutherland/LESS-Prefixer.git
